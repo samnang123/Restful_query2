@@ -1,7 +1,7 @@
 # Restful_query2
 
 zf2 learn Restful get data from DB and display in Table
-<div style="background:red;">
+
     git clone https://github.com/samnang123/Restful_query2.git
     
     cd Restful_query2
@@ -9,7 +9,7 @@ zf2 learn Restful get data from DB and display in Table
     php composer.phar self-update
     
     php composer.phar install
-</div>
+
 Create DB name: zendrestful
 
 
