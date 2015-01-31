@@ -3,7 +3,7 @@
 
 zf2 learn Restful get data from DB and display in Table
 
-cd INYOUR FOLDER NAME
+cd Restful_query2
 
 php composer.phar self-update
 
