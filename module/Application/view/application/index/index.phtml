@@ -103,43 +103,14 @@
         $('.edit-place').removeClass('hidden');
 
         var id = $(this).attr('data-id');
-        var url = '<?php echo $this->basePath()?>/';
-        this.requestUrl = function(url, onSuccess, onError) {
-            $.ajax({
-                async: false,
-                url: url,
-                type: 'GET',
-                contentType: 'application/json',
-                success: function (data, textStatus, xhr) {
-                    onSuccess(data, textStatus, xhr);
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    if (null != onError) {
-                        error(xhr, textStatus, errorThrown);
-                    }
-                }
-            });
-        }
-
+        var url = '<?php echo $this->basePath()?>/api/'+id;
+        alert(url);
     });
     /*~~~~~~~~~~~~~~~End Edit with Ajax~~~~~~~~~~~~~~~~~~*/
-
-
-
-
-
-
-
-
-
-
-
-
 
     $('.btn-delete').click(function(){
         var id = $(this).attr('data-id');
         alert("Are you sure! You want to delete this record?");
-
 
     });
 </script>
