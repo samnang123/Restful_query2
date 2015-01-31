@@ -1,6 +1,6 @@
 # Restful_query2
 
-How to install This tutorial Zend+Restful API
+1 - How to install This tutorial Zend+Restful API
 
     git clone https://github.com/samnang123/Restful_query2.git
     
@@ -10,10 +10,10 @@ How to install This tutorial Zend+Restful API
     
     php composer.phar install
 
-Create DB name: zendrestful
+2 -Create DB name: zendrestful
 
 
-Create table in DB
+3 -Create table in DB
 
     in file Restful_query2/tbluser.sql
     
