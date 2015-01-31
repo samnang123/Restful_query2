@@ -1,6 +1,6 @@
 # Restful_query2
 
-zf2 learn Restful get data from DB and display in Table
+How to install This tutorial Zend+Restful API
 
     git clone https://github.com/samnang123/Restful_query2.git
     
