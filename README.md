@@ -1,4 +1,4 @@
-# Restful_query2
+# Restful_query2 + JQuery Template
 
 1 - How to install This tutorial Zend+Restful API
 
