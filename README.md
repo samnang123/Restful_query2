@@ -15,6 +15,6 @@ Create DB name: zendrestful
 
 Create table in DB
 
-in file Restful_query2/tbluser.sql
-
-RUN: localhost/Restful_query2/public
+    in file Restful_query2/tbluser.sql
+    
+    RUN: localhost/Restful_query2/public
