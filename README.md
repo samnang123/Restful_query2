@@ -15,6 +15,6 @@
 
 3 -Create table in DB
 
-    in file Restful_query2/tbluser.sql
+    In file Restful_query2/tbluser.sql
     
     RUN: localhost/Restful_query2/public
