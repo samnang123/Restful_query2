@@ -5,7 +5,6 @@ use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 
 class ApiController extends AbstractRestfulController{
-
     public function getList()
     {
         $model = new ModelTable();
@@ -38,7 +37,37 @@ class ApiController extends AbstractRestfulController{
             "email"     =>$data['email']
         );
 
-        $data = $model->updateusser($id,$value);
+            $data = $model->updateusser($id,$value);
+
+
+        return new JsonModel(array(
+            'data'=>$data
+        ));
+    }
+    public function delete($id)
+    {
+        $model = new ModelTable();
+        $data = $model->deleteuser($id);
+
+        return new JsonModel(array(
+            'data'=>$data
+        ));
+    }
+    public function create($data)
+    {
+        $model = new ModelTable();
+        $value = array(
+            "user_name" =>$data['user_name'],
+            "user_pwd"  =>$data['user_pwd'],
+            "first_name"=>$data['first_name'],
+            "last_name" =>$data['last_name'],
+            "sex"       =>$data['sex'],
+            "address"   =>$data['address'],
+            "phone"     =>$data['phone'],
+            "email"     =>$data['email']
+        );
+            $data = $model->insertUser($value);
+
 
         return new JsonModel(array(
             'data'=>$data

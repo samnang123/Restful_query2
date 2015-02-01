@@ -12,6 +12,7 @@ return array(
                     ),
                 ),
             ),
+
             'admin' => array(
                 'type'    => 'Literal',
                 'options' => array(

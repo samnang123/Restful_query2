@@ -1,3 +1,23 @@
+<div class="btn btn-success btn-register">Register</div>
+<form class="insert-place hidden">
+    <div class="row">
+        <div class="col-md-3"><input class="form-control" name="r-username" type="text" placeholder="Input Username..."></div>
+        <div class="col-md-3"><input class="form-control" name="r-userpwd" type="text" placeholder="Input Password..."></div>
+        <div class="col-md-3"><input class="form-control" name="r-firstname" type="text" placeholder="Input First Name..."></div>
+        <div class="col-md-3"><input class="form-control" name="r-lastname" type="text" placeholder="Input Last Name..."></div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-3"><select class="r-sex form-control"><option value="male">Male</option><option value="female">Female</option></select></div>
+        <div class="col-md-3"><input class="form-control" name="r-address" type="text" placeholder="Input Your Address..."></div>
+        <div class="col-md-3"><input class="form-control" name="r-phone" type="number" placeholder="012334455..."></div>
+        <div class="col-md-3"><input class="form-control" name="r-email" type="mail" placeholder="Input Your E-mail..."></div>
+    </div><br>
+    <div class="row">
+        <div class="col-md-3"><button class="btn-insert-user btn btn-success form-control" type="button" data-id="${user_id}">Insert</button></div>
+    </div><br>
+</form>
+<hr>
+
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Start Data in Table~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <table class="table table-bordered">
     <thead>
@@ -40,16 +60,16 @@
 </form>
 <script type="text/x-jQuery-tmpl" class="dataidapi">
     <div class="row">
-        <div class="col-md-3"><input class="form-control" name="username" value="${user_name}" type="text" placeholder="Input Username..."></div>
-        <div class="col-md-3"><input class="form-control" name="userpwd" value="${user_pwd}" type="text" placeholder="Input Password..."></div>
-        <div class="col-md-3"><input class="form-control" name="firstname" value="${first_name}" type="text" placeholder="Input First Name..."></div>
-        <div class="col-md-3"><input class="form-control" name="lastname" value="${last_name}" type="text" placeholder="Input Last Name..."></div>
+        <div class="col-md-3"><input class="username form-control" name="username" value="${user_name}" type="text" placeholder="Input Username..."></div>
+        <div class="col-md-3"><input class="userpwd form-control" name="userpwd" value="${user_pwd}" type="text" placeholder="Input Password..."></div>
+        <div class="col-md-3"><input class="firstname form-control" name="firstname" value="${first_name}" type="text" placeholder="Input First Name..."></div>
+        <div class="col-md-3"><input class="lastname form-control" name="lastname" value="${last_name}" type="text" placeholder="Input Last Name..."></div>
     </div><br>
     <div class="row">
         <div class="col-md-3"><select class="sex form-control"><option value="male">Male</option><option value="female">Female</option></select></div>
-        <div class="col-md-3"><input class="form-control" name="address" value="${address}" type="text" placeholder="Input Your Address..."></div>
-        <div class="col-md-3"><input class="form-control" name="phone" value="${phone}" type="number" placeholder="012334455..."></div>
-        <div class="col-md-3"><input class="form-control" name="email" value="${email}" type="mail" placeholder="Input Your E-mail..."></div>
+        <div class="col-md-3"><input class="address form-control" name="address" value="${address}" type="text" placeholder="Input Your Address..."></div>
+        <div class="col-md-3"><input class="phone form-control" name="phone" value="${phone}" type="number" placeholder="012334455..."></div>
+        <div class="col-md-3"><input class="email form-control" name="email" value="${email}" type="mail" placeholder="Input Your E-mail..."></div>
     </div><br>
     <div class="row">
         <div class="col-md-3"><button class="btn-edit-user btn btn-success form-control" type="button" data-id="${user_id}">Edit</button></div>
@@ -107,23 +127,23 @@
     $('.btn-edit').click(function(){
         $('.table').addClass('hidden');
         $('.edit-place').removeClass('hidden');
-
+        $('.btn-register').addClass('hidden');
         var id = $(this).attr('data-id');
         var getid = getList('api/'+id);
         $('.dataidapi').tmpl(getid['data']).appendTo('.edit-place');
 
         $('.btn-edit-user').click(function(){
             var userid = $(this).attr('data-id');
-            var username = $("input[name*='username']").val();
-            var userpwd = $("input[name*='userpwd']").val();
-            var firstname = $("input[name*='firstname']").val();
-            var lastname = $("input[name*='lastname']").val();
+            var username = $(".username").val();
+            var userpwd = $(".userpwd").val();
+            var firstname = $(".firstname").val();
+            var lastname = $(".lastname").val();
             var sex = $(".sex").val();
-            var address = $("input[name*='address']").val();
-            var phone = $("input[name*='phone']").val();
-            var email = $("input[name*='email']").val();
+            var address = $(".address").val();
+            var phone = $(".phone").val();
+            var email = $(".email").val();
             var url = "<?php echo $this->basepath();?>/api/"+userid;
-
+            alert(username+userpwd+firstname+lastname+sex+address+phone+email);
             $.ajax({
                 async: false,
                 url: url,
@@ -131,10 +151,10 @@
                 data: {"user_name":username,"user_pwd":userpwd,"first_name":firstname,"last_name":lastname,"sex":sex,"address":address,"phone":phone,"email":email},
                 dataType: 'application/json',
                 success: function(){
-                    console.log('success');
+                    window.location.reload();
                 },
                 error: function(){
-                    console.log('Error');
+                    window.location.reload();
                 }
             });
         });
@@ -142,16 +162,60 @@
 
     /*~~~~~~~~~~~~~~~End Edit with Ajax~~~~~~~~~~~~~~~~~~*/
 
-
-
-
-
-
+    /*~~~~~~~~~~~~~~Start Delete User~~~~~~~~~~~~~~~~~~~~*/
     $('.btn-delete').click(function(){
         var id = $(this).attr('data-id');
+        var url = "<?php echo $this->basepath();?>/api/"+id;
         alert("Are you sure! You want to delete this record?");
-
+        $.ajax({
+            async: false,
+            url: url,
+            type:'DELETE',
+            dataType: 'application/json',
+            success: function(){
+                window.location.reload();
+            },
+            error: function(){
+                window.location.reload();
+            }
+        });
     });
+    /*~~~~~~~~~~~~~~~End Delete User~~~~~~~~~~~~~~~~~~~~*/
+
+    $('.btn-register').click(function () {
+        $('.btn-register').addClass('hidden');
+        $('.insert-place').removeClass('hidden');
+    });
+
+    /*~~~~~~~~~~~~~~Start Register User~~~~~~~~~~~~~~~~~~~~*/
+    $('.btn-insert-user').click(function(){
+//        var userid = $(this).attr('data-id');
+        var username = $("input[name*='r-username']").val();
+        var userpwd = $("input[name*='r-userpwd']").val();
+        var firstname = $("input[name*='r-firstname']").val();
+        var lastname = $("input[name*='r-lastname']").val();
+        var sex = $(".r-sex").val();
+        var address = $("input[name*='r-address']").val();
+        var phone = $("input[name*='r-phone']").val();
+        var email = $("input[name*='r-email']").val();
+        var url = "<?php echo $this->basepath();?>/api";
+//        alert(username+userpwd+firstname+lastname+sex+address+phone+email);
+        $.ajax({
+            async: false,
+            url: url,
+            type:'POST',
+            data: {"user_name":username,"user_pwd":userpwd,"first_name":firstname,"last_name":lastname,"sex":sex,"address":address,"phone":phone,"email":email},
+            dataType: 'application/json',
+            success: function(){
+                window.location.reload();
+            },
+            error: function(){
+                window.location.reload();
+            }
+        });
+    });
+    /*~~~~~~~~~~~~~~End Register User~~~~~~~~~~~~~~~~~~~~*/
+
 </script>
 
 

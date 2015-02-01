@@ -36,6 +36,20 @@ class ModelTable extends TableGateway{
         $rs = new ResultSet();
         return $rs->initialize($statemen)->buffer()->toArray();
     }
+    public function deleteuser($id){
+        $sql = new Sql($this->getAdapter());
+        $select = $sql->delete('tbluser')->where("user_id = '$id'");
+        $statemen = $sql->prepareStatementForSqlObject($select)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($statemen)->buffer()->toArray();
+    }
+    public function insertUser($value){
+        $sql = new Sql($this->getAdapter());
+        $insert = $sql->insert('tbluser')->values($value);
+        $statemen = $sql->prepareStatementForSqlObject($insert)->execute();
+        $rs = new ResultSet();
+        return $rs->initialize($statemen)->buffer()->toArray();
+    }
 
 
 
