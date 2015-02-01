@@ -131,7 +131,10 @@
                 data: {"user_name":username,"user_pwd":userpwd,"first_name":firstname,"last_name":lastname,"sex":sex,"address":address,"phone":phone,"email":email},
                 dataType: 'application/json',
                 success: function(){
-                    alert(123);
+                    console.log('success');
+                },
+                error: function(){
+                    console.log('Error');
                 }
             });
         });

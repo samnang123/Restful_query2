@@ -38,9 +38,11 @@ class ApiController extends AbstractRestfulController{
             "email"     =>$data['email']
         );
 
-        $model->updateusser($id,$value);
+        $data = $model->updateusser($id,$value);
 
-        return $this->redirect()->toRoute('home');
+        return new JsonModel(array(
+            'data'=>$data
+        ));
     }
 
 }
