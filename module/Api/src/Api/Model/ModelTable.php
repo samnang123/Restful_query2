@@ -29,9 +29,9 @@ class ModelTable extends TableGateway{
         };
 
     }
-    public function updateusser($id,$data){
+    public function updateusser($id,$value){
         $sql = new Sql($this->getAdapter());
-        $select = $sql->update('tbluser')->set($data)->where("user_id = '$id'");
+        $select = $sql->update('tbluser')->set($value)->where("user_id = '$id'");
         $statemen = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
         return $rs->initialize($statemen)->buffer()->toArray();

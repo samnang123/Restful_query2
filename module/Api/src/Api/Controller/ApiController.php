@@ -18,11 +18,29 @@ class ApiController extends AbstractRestfulController{
         $data = $model->getuser($id);
         return new JsonModel(array('data'=>$data));
     }
+
+    /**
+     * @param mixed $id
+     * @param mixed $data
+     * @return JsonModel
+     */
     public function update($id, $data)
     {
         $model = new ModelTable();
-        $data = $model->updateusser($id,$data);
-        return new JsonModel(array('data'=>$data));
+        $value = array(
+            "user_name" =>$data['user_name'],
+            "user_pwd"  =>$data['user_pwd'],
+            "first_name"=>$data['first_name'],
+            "last_name" =>$data['last_name'],
+            "sex"       =>$data['sex'],
+            "address"   =>$data['address'],
+            "phone"     =>$data['phone'],
+            "email"     =>$data['email']
+        );
+
+        $model->updateusser($id,$value);
+
+        return $this->redirect()->toRoute('home');
     }
 
 }

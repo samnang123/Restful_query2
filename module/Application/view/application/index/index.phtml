@@ -49,7 +49,7 @@
         <div class="col-md-3"><select class="sex form-control"><option value="male">Male</option><option value="female">Female</option></select></div>
         <div class="col-md-3"><input class="form-control" name="address" value="${address}" type="text" placeholder="Input Your Address..."></div>
         <div class="col-md-3"><input class="form-control" name="phone" value="${phone}" type="number" placeholder="012334455..."></div>
-        <div class="col-md-3"><input class="form-control" name="email" value="${email}" type="text" placeholder="Input Your E-mail..."></div>
+        <div class="col-md-3"><input class="form-control" name="email" value="${email}" type="mail" placeholder="Input Your E-mail..."></div>
     </div><br>
     <div class="row">
         <div class="col-md-3"><button class="btn-edit-user btn btn-success form-control" type="button" data-id="${user_id}">Edit</button></div>
@@ -122,20 +122,16 @@
             var address = $("input[name*='address']").val();
             var phone = $("input[name*='phone']").val();
             var email = $("input[name*='email']").val();
-//            var url = "<?php //echo $this->basepath();?>///api/"+userid+'?user_name='+username+'&user_pwd='+userpwd+'&first_name='+firstname+'&last_name='+lastname+'&sex='+sex+'&address='+address+'&phone='+phone+'&email='+email;
-
+            var url = "<?php echo $this->basepath();?>/api/"+userid;
 
             $.ajax({
                 async: false,
                 url: url,
                 type:'PUT',
-                data: {"user_id":userid,"user_name":username,"user_pwd":userpwd,"first_name":firstname,"last_name":lastname,"sex":sex,"address":address,"phone":phone,"email":email},
-                contentType: 'application/json',
-                success: function(data){
-                    console.log(data);
-                },
-                error: function(msg){
-                    console.log(msg);
+                data: {"user_name":username,"user_pwd":userpwd,"first_name":firstname,"last_name":lastname,"sex":sex,"address":address,"phone":phone,"email":email},
+                dataType: 'application/json',
+                success: function(){
+                    alert(123);
                 }
             });
         });
