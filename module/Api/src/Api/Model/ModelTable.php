@@ -14,9 +14,24 @@ class ModelTable extends TableGateway{
         $this->adapter = $adapter;
     }
 
-    public function getuser(){
+    public function getuser($id = ''){
         $sql = new Sql($this->getAdapter());
         $select = $sql->select('tbluser');
+        if($id !=''){
+            $select->where("user_id = '$id'");
+            $statemen = $sql->prepareStatementForSqlObject($select)->execute();
+            $rs = new ResultSet();
+            return $rs->initialize($statemen)->buffer()->toArray();
+        }else{
+            $statemen = $sql->prepareStatementForSqlObject($select)->execute();
+            $rs = new ResultSet();
+            return $rs->initialize($statemen)->buffer()->toArray();
+        };
+
+    }
+    public function updateusser($id,$data){
+        $sql = new Sql($this->getAdapter());
+        $select = $sql->update('tbluser')->set($data)->where("user_id = '$id'");
         $statemen = $sql->prepareStatementForSqlObject($select)->execute();
         $rs = new ResultSet();
         return $rs->initialize($statemen)->buffer()->toArray();

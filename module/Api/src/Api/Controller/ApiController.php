@@ -12,15 +12,17 @@ class ApiController extends AbstractRestfulController{
         $data = $model->getuser();
         return new JsonModel(array('data'=>$data));
     }
-
-
-
-
-
-
-
-
-
-
+    public function get($id)
+    {
+        $model = new ModelTable();
+        $data = $model->getuser($id);
+        return new JsonModel(array('data'=>$data));
+    }
+    public function update($id, $data)
+    {
+        $model = new ModelTable();
+        $data = $model->updateusser($id,$data);
+        return new JsonModel(array('data'=>$data));
+    }
 
 }

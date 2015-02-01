@@ -12,10 +12,10 @@ return array(
                     ),
                 ),
             ),
-            'api' => array(
+            'admin' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/api',
+                    'route'    => '/admin',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Api\Controller',
                         'controller'    => 'Api',
