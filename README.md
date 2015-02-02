@@ -18,3 +18,7 @@
     In file Restful_query2/tbluser.sql
     
     RUN: localhost/Restful_query2/public
+    
+Vedio In youtube:
+    
+    https://www.youtube.com/watch?v=Naw59Cd9T1g
