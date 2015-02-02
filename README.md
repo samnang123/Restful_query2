@@ -19,6 +19,6 @@
     
     RUN: localhost/Restful_query2/public
     
-Vedio In youtube:
+Vedios How to clone project ZF2 In github by youtube:
     
     https://www.youtube.com/watch?v=Naw59Cd9T1g
