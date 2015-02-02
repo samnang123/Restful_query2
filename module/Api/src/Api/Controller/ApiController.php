@@ -36,21 +36,20 @@ class ApiController extends AbstractRestfulController{
             "phone"     =>$data['phone'],
             "email"     =>$data['email']
         );
-
-            $data = $model->updateusser($id,$value);
+        $model->updateusser($id,$value);
 
 
         return new JsonModel(array(
-            'data'=>$data
+            'msg'=>'update success'
         ));
     }
     public function delete($id)
     {
         $model = new ModelTable();
-        $data = $model->deleteuser($id);
+        $model->deleteuser($id);
 
         return new JsonModel(array(
-            'data'=>$data
+            'msg'=>'Success'
         ));
     }
     public function create($data)
@@ -66,11 +65,11 @@ class ApiController extends AbstractRestfulController{
             "phone"     =>$data['phone'],
             "email"     =>$data['email']
         );
-            $data = $model->insertUser($value);
+            $model->insertUser($value);
 
 
         return new JsonModel(array(
-            'data'=>$data
+            'data'=>'Data insert'
         ));
     }
 

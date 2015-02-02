@@ -143,7 +143,10 @@
             var phone = $(".phone").val();
             var email = $(".email").val();
             var url = "<?php echo $this->basepath();?>/api/"+userid;
-            alert(username+userpwd+firstname+lastname+sex+address+phone+email);
+//            alert(username+userpwd+firstname+lastname+sex+address+phone+email);
+            $('.table').removeClass('hidden');
+            $('.edit-place').addClass('hidden');
+            $('.btn-register').removeClass('hidden');
             $.ajax({
                 async: false,
                 url: url,
@@ -151,10 +154,10 @@
                 data: {"user_name":username,"user_pwd":userpwd,"first_name":firstname,"last_name":lastname,"sex":sex,"address":address,"phone":phone,"email":email},
                 dataType: 'application/json',
                 success: function(){
-                    window.location.reload();
+
                 },
                 error: function(){
-                    window.location.reload();
+                    //window.location.reload();
                 }
             });
         });
@@ -173,10 +176,10 @@
             type:'DELETE',
             dataType: 'application/json',
             success: function(){
-                window.location.reload();
+                //window.location.reload();
             },
             error: function(){
-                window.location.reload();
+                //window.location.reload();
             }
         });
     });
@@ -200,6 +203,9 @@
         var email = $("input[name*='r-email']").val();
         var url = "<?php echo $this->basepath();?>/api";
 //        alert(username+userpwd+firstname+lastname+sex+address+phone+email);
+        $('.table').removeClass('hidden');
+        $('.edit-place').addClass('hidden');
+        $('.insert-place').addClass('hidden');
         $.ajax({
             async: false,
             url: url,
@@ -207,10 +213,10 @@
             data: {"user_name":username,"user_pwd":userpwd,"first_name":firstname,"last_name":lastname,"sex":sex,"address":address,"phone":phone,"email":email},
             dataType: 'application/json',
             success: function(){
-                window.location.reload();
+//                window.location.reload();
             },
             error: function(){
-                window.location.reload();
+//                window.location.reload();
             }
         });
     });
